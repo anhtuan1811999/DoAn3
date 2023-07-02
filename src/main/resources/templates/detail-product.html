@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin chi tiết sản phẩm</title>
+    <link rel="stylesheet" th:href="@{/style/detail-product.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script th:src="@{/js/detail-product.js}"></script>
+</head>
+<body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a href="#about">About</a>
+    </div>
+</header>
+<div class="out-container">
+    <form>
+        <div class="wrap-container">
+            <div class="container">
+                <div class="sub-container" id="image-wrap">
+                    <div class="image">
+                        <img id="image-show" th:src="'data:image/jpeg;base64,'+${product.image}" alt="" height="600px"
+                             width="600px">
+                    </div>
+                    <div class="input-image">
+                        <input type="file" name="choose-image" id="choose-image" class="input-file" accept="image/*">
+                    </div>
+                </div>
+                <div class="sub-container" id="info-wrap">
+                    <label id="product-code">Mã sản phẩm : SH</label>
+                    <label id="product-id" th:text="${product.id}"></label><br>
+                    <label for="product-name">Tên sản phẩm:</label><br>
+                    <input type="text" class="info-io" id="product-name" th:value="${product.name}"><br>
+                    <label for="product-price">Giá bán sản phẩm:</label><br>
+                    <input type="text" class="info-io" id="product-price" th:value="${product.price}"><br>
+                    <label for="product-original-price">Giá gốc sản phẩm:</label><br>
+                    <input type="text" class="info-io" id="product-original-price"
+                           th:value="${product.originalPrice}"><br>
+                    <label for="product-description">Mô tả sản phẩm:</label><br>
+                    <textarea name="" id="product-description" cols="30" rows="10"
+                              th:text="${product.description}"></textarea><br>
+
+                </div>
+                <div class="sub-container">
+                    <form action="">
+                        <table>
+                            <tr>
+                                <th>Kích cỡ</th>
+                                <th>Số lượng</th>
+                                <th>Thay đổi</th>
+                            </tr>
+                            <tr>
+                                <td>36</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(0).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size36"></td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(1).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size37"></td>
+                            </tr>
+                            <tr>
+                                <td>38</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(2).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size38"></td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(3).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size39"></td>
+                            </tr>
+                            <tr>
+                                <td>40</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(4).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size40"></td>
+                            </tr>
+                            <tr>
+                                <td>41</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(5).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size41"></td>
+                            </tr>
+                            <tr>
+                                <td>42</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(6).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size42"></td>
+                            </tr>
+                            <tr>
+                                <td>43</td>
+                                <td th:text="${productToSizeRepository.findProductToSizeByProductAndStatus(product, true).get(7).quantity}"></td>
+                                <td><input type="number" class="quan-size" id="quan-size43"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-button-submit">
+            <input class="button-submit" type="button" value="Save" id="button-submit">
+        </div>
+    </form>
+</div>
+</body>
+</html>

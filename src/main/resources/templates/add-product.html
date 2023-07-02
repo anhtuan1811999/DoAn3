@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sản phẩm</title>
+    <link th:href="@{/style/add-product.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{js/add-product.js}"></script>
+</head>
+<body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a href="#about">About</a>
+    </div>
+</header>
+<div class="container">
+    <div class="container-form">
+        <form action="#" th:action="@{add-product}" th:method="post" enctype="multipart/form-data"
+              th:object="${dtoAddProduct}">
+            <div class="container-form-hub">
+                <div class="container-form-1">
+                    <div class="form-element">
+                        <span>Tên sản phẩm: </span><br>
+                        <input type="text" class="product-input" id="product-name" th:field="*{name}">
+                    </div>
+                    <div class="form-element">
+                        <span>Giá sản phẩm: </span><br>
+                        <input type="text" class="product-input" id="product-price" th:field="*{price}"
+                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    </div>
+                    <div class="form-element">
+                        <span>Giá gốc sản phẩm: </span><br>
+                        <input type="text" class="product-input" id="product-original-price" th:field="*{originalPrice}"
+                               onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    </div>
+                    <div class="form-element">
+                        <span>Kích thước sản phẩm và số lượng: </span>
+                        <div class="wrap-size-checkbox">
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size36" id="size36"
+                                       class="checkbox" th:field="*{size36}">
+                                <label class="size">size 36</label>
+                                <input type="text" class="quantity" id="quantity-size36" disabled="true"
+                                       th:field="*{quantity36}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size37" id="size37"
+                                       class="checkbox" th:field="*{size37}">
+                                <label class="size">size 37</label>
+                                <input type="text" class="quantity" id="quantity-size37" disabled="true"
+                                       th:field="*{quantity37}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size38" id="size38"
+                                       class="checkbox" th:field="*{size38}">
+                                <label class="size">size 38</label>
+                                <input type="text" class="quantity" id="quantity-size38" disabled="true"
+                                       th:field="*{quantity38}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size39" id="size39"
+                                       class="checkbox" th:field="*{size39}">
+                                <label class="size">size 39</label>
+                                <input type="text" class="quantity" id="quantity-size39" disabled="true"
+                                       th:field="*{quantity39}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size40" id="size40"
+                                       class="checkbox" th:field="*{size40}">
+                                <label class="size">size 40</label>
+                                <input type="text" class="quantity" id="quantity-size40" disabled="true"
+                                       th:field="*{quantity40}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size41" id="size41"
+                                       class="checkbox" th:field="*{size41}">
+                                <label class="size">size 41</label>
+                                <input type="text" class="quantity" id="quantity-size41" disabled="true"
+                                       th:field="*{quantity41}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size42" id="size42"
+                                       class="checkbox" th:field="*{size42}">
+                                <label class="size">size 42</label>
+                                <input type="text" class="quantity" id="quantity-size42" disabled="true"
+                                       th:field="*{quantity42}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                            <div class="size-checkbox">
+                                <input onclick="check(this.id)" type="checkbox" name="size43" id="size43"
+                                       class="checkbox" th:field="*{size43}">
+                                <label class="size">size 43</label>
+                                <input type="text" class="quantity" id="quantity-size43" disabled="true"
+                                       th:field="*{quantity43}"
+                                       onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                <label>Chiếc</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <span>Mô tả sản phẩm: </span>
+                        <textarea type="text" class="product-input" id="product-description"
+                                  th:field="*{description}"></textarea>
+                    </div>
+                </div>
+                <div class="container-form-2">
+                    <div class="form-element">
+                        <span>Ảnh sản phẩm: </span>
+                        <input onchange="change()" type="file" name="file" accept="image/png, image/jpeg"
+                               class="product-image" id="product-image">
+                        <div>
+                            <img id="show-img" height="500" width="450">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-element-input">
+                <input type="submit" class="form-submit" id="form-submit">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

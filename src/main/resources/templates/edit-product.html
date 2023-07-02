@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa thông tin sản phẩm</title>
+    <link rel="stylesheet" th:href="@{/style/edit-product.css}">
+    <script text="text/javascript" th:src="@{/js/edit-product.js}"></script>
+</head>
+<body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a href="#about">About</a>
+    </div>
+</header>
+<div id="title">
+    <h1>Thông tin các sản phẩm hiện có</h1>
+</div>
+<div class="container">
+    <div class="table-wrap">
+        <table border="1px">
+            <tr>
+                <th>Thông tin sản phẩm</th>
+                <th>Mô tả sản phẩm</th>
+                <th>Tuỳ chọn chỉnh sửa</th>
+            </tr>
+            <th:block th:each="product : ${productList}">
+                <tr>
+                    <td>
+                        <div class="product-wrap">
+                            <div class="code-product">
+                                <h3 id="code-product-label">MÃ SẢN PHẨM: </h3>
+                                <h3 id="code-product-id" th:text="'SH'+${product.id}"></h3>
+                            </div>
+                            <div class="product-image">
+                                <img th:src="'data:image/jpeg;base64,'+${product.image}" height="350" width="300">
+                            </div>
+                            <div class="product-name">
+                                <h5 th:text="${product.name}"></h5>
+                            </div>
+                            <div>
+                                <span>Giá bán: </span>
+                                <span th:text="${product.price}"></span>
+                            </div>
+                            <div>
+                                <span>Giá gốc: </span>
+                                <span th:text="${product.originalPrice}"></span>
+                            </div>
+                        </div>
+                        <div class="all-size">
+                            <th:block
+                                    th:each="size : ${productToSizeRepository.findProductToSizeByProductAndStatus(product,true)}">
+                                <label th:if="${size.quantity!=0}" class="size-label"
+                                       th:text="${size.size.size}"></label>
+                                <label th:if="${size.quantity<=0}" class="size-label" th:text="${size.size.size}"
+                                       style="color: red"></label>
+                            </th:block>
+                        </div>
+                    </td>
+                    <td width="300">
+                        <p th:text="${product.description}"></p>
+                    </td>
+                    <td>
+                        <div class="edit-button">
+                            <form action="#" th:action="@{edit-product/edit-information/{id}(id = ${product.id})}"
+                                  method="get">
+                                <input id="button-edit" type="submit" value="EDIT">
+                            </form>
+                        </div>
+                        <div class="edit-button">
+                            <form action="#" th:action="@{edit-product/delete/{id}(id = ${product.id})}" method="get">
+                                <input id="button-delete" type="submit" value="DELETE">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+</body>
+</html>

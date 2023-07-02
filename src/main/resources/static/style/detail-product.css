@@ -1,0 +1,120 @@
+/* Add a black background color to the top navigation */
+.top-nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.top-nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.top-nav a:hover {
+
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.top-nav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+body {
+    background-color: #c6eaea;
+}
+.out-container{
+    margin-top: 100px;
+    border: 1px dot-dash;
+    background-color: whitesmoke;
+    margin-right: 100px;
+    margin-left: 100px;
+    border-radius: 30px;
+}
+.wrap-container {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.sub-container {
+    padding: 10px;
+
+}
+
+.info-io {
+    margin: 10px;
+}
+
+.wrap-button-submit {
+    margin-top: 10px;
+    display: flex;
+}
+.button-submit {
+    margin: auto;
+}
+
+textarea {
+    margin: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    height: 300px;
+}
+
+table, tr, th, td {
+    border: 1px dotted black;
+    text-align: center;
+}
+
+.quan-size {
+    width: 50px;
+}
+
+#button-submit {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 9px #999;
+}
+
+#button-submit:hover {
+    background-color: #76b479;
+}
+
+#button-submit:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #3e8e41;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #3e8e41;
+}

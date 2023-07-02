@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" th:href="@{/style/home-page.css}">
+</head>
+<body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a href="#about">About</a>
+    </div>
+</header>
+<div id="wrapper">
+    <ul class="products">
+        <th:block th:each="product : ${productList}">
+            <li>
+                <div class="product-item">
+                    <div class="product-top">
+                        <a href="" class="product-thumb">
+                            <img th:src="'data:image/jpeg;base64,'+${product.image}" alt="">
+                        </a>
+                        <a href="" class="buy-now">Mua ngay</a>
+                        <!--Mua ngay-->
+                    </div>
+                    <div class="product-info">
+                        <a href="" class="product-cat"></a>
+                        <a href="" class="product-name" th:value="${product.name}" th:text="${product.name}"></a>
+                        <div class="product-price" th:value="${product.price}" th:text="${product.price}"></div>
+                    </div>
+                </div>
+            </li>
+        </th:block>
+    </ul>
+</div>
+</body>
+</html>
