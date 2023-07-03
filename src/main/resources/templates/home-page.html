@@ -18,12 +18,12 @@
     <ul class="products">
         <th:block th:each="product : ${productList}">
             <li>
-                <div class="product-item">
+                <div class="product-item"  >
                     <div class="product-top">
-                        <a href="" class="product-thumb">
+                        <a th:href="@{/detail-product-customer/{id}(id = ${product.id})}" class="product-thumb">
                             <img th:src="'data:image/jpeg;base64,'+${product.image}" alt="">
                         </a>
-                        <a href="" class="buy-now">Mua ngay</a>
+                        <a th:href="@{/detail-product-customer}" class="buy-now">Mua ngay</a>
                         <!--Mua ngay-->
                     </div>
                     <div class="product-info">

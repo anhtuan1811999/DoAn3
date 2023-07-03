@@ -115,35 +115,21 @@ public class ProductController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("detail-product-customer")
-    public String detailProductCustomer(HttpServletRequest request, HttpSession session, Model model){
-        List<DTOItem> itemList = (List<DTOItem>) request.getSession().getAttribute("cart");
-        if (itemList == null){
-            itemList = new ArrayList<>();
-            request.getSession().setAttribute("cart", itemList);
-        }
+    @GetMapping("detail-product-customer/{id}")
+    public String detailProductCustomer(@PathVariable("id") int id ,HttpServletRequest request, HttpSession session, Model model){
+        var product = productRepository.findByIdAndStatus(id, true);
+        var sizes = productToSizeRepository.findProductToSizeByProductAndStatus(product, true);
+        model.addAttribute("product",product);
+        model.addAttribute("sizes",sizes);
         return "detail-product-customer";
     }
 
-    public static int count = 0;
 
     @PostMapping("detail-product-customer")
     public String detailProductCustomerSubmit(HttpServletRequest request, HttpSession session, Model model){
+        System.out.println("inside");
+        System.out.println(request.getParameter("sizeInput"));
 
-        ++count;
-        if(count==3){
-            session.removeAttribute("cart");
-        }
-
-        ((List<DTOItem>) session.getAttribute("cart")).add(DTOItem
-                .builder()
-                .quantity(Integer.parseInt(request.getParameter("quantity")))
-                .id(Integer.parseInt(request.getParameter("id-product")))
-                .build());
-        ((List<DTOItem>) session.getAttribute("cart")).forEach(
-                element -> System.out.println(element.getId() + "  " + element.getQuantity())
-        );
-
-        return "detail-product-customer";
+        return "redirect:/home-page";
     }
 }
