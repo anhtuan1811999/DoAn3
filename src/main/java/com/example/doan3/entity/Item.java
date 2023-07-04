@@ -21,5 +21,7 @@ public class Item {
     private Product product;
     private int quantity;
     private int size;
+    private String billCode;
+    private boolean status;
 
 }

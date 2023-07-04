@@ -7,19 +7,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "cart")
 @Data
+@Table(name = "total_money_bill")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
+public class TotalMoneyBill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Item item;
-    @ManyToOne
     private Customer customer;
+    private Long totalMoney;
+    private String billCode;
+    private boolean status;
 
 }

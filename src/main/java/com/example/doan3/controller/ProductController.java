@@ -42,7 +42,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("home-page")
+    @GetMapping("/home-page")
     public String homePage(Model model, HttpSession session, HttpServletRequest request){
         List<DTOItem> itemList = (List<DTOItem>) request.getSession().getAttribute("cart");
         if (itemList == null){
@@ -54,7 +54,7 @@ public class ProductController {
         return "home-page";
     }
 
-    @GetMapping("add-product")
+    @GetMapping("/add-product")
     public String addProduct(Model model){
         DTOAddProduct dtoAddProduct = new DTOAddProduct();
         model.addAttribute("dtoAddProduct", dtoAddProduct);
