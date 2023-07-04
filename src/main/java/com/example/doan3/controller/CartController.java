@@ -59,11 +59,11 @@ public class CartController {
     }
 
     @PostMapping("/payment")
-    public String payForBill(HttpSession session, HttpServletRequest request){
+    public String payForBill(HttpSession session, HttpServletRequest request, Model model){
         System.out.println("Inside Payment");
         String codeBill = Util.generateBillCode();
         List<DTOItem> dtoItemList = (List<DTOItem>) session.getAttribute("cart");
-        if (dtoItemList ==null){
+        if (dtoItemList ==null || dtoItemList.isEmpty()){
             return "redirect:/cart-product";
         }
         long monneyBill = Util.calculateBill(billService.getProductAndInformationRelated(dtoItemList));
@@ -84,6 +84,6 @@ public class CartController {
         customerService.insertCustomerToDatabase(customer);
         totalMoneyBillService.insertTotalMoneyBillToDatabase(totalMoneyBill);
         billService.insertBillToDatabase(listItem, customer);
-        return "redirect:/home-page";
+        return "redirect:/home-page-customer";
     }
 }

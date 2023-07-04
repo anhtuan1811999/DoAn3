@@ -35,6 +35,15 @@
 body{
     background: #ddb5b5;
 }
+.announce-no-product {
+    display: flex;
+    justify-content: center;
+    color: #da4848;
+}
+.px-5{
+    display: flex;
+    justify-content: center;
+}
 .cart{
     margin: 20px 0;
     background-color: #F6F5FA;;

@@ -10,9 +10,7 @@
 <body>
 <header>
     <div class="top-nav">
-        <a class="active" th:href="@{/home-page}">Home</a>
-        <a th:href="@{/add-product}">New</a>
-        <a th:href="@{/edit-product}">Edit</a>
+        <a class="active" th:href="@{/home-page-customer}">Home</a>
         <a th:href="@{/cart-product}">Cart</a>
     </div>
 </header>
@@ -60,8 +58,8 @@
 
 
                 <div class = "purchase-info">
-                    <input type = "number" min = "0" value = "1" th:name="quantity">
-                    <button type = "submit" class = "btn" onclick="alert('Đã lưu sản phẩm vào giỏ hàng')">
+                    <input type = "number" min = "1" value = "1" th:name="quantity">
+                    <button type = "submit" class = "btn">
                         Add to Cart <i class = "fas fa-shopping-cart"></i>
                     </button>
                 </div>

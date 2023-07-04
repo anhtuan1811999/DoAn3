@@ -12,7 +12,6 @@ import com.example.doan3.service.ProductToSizeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -42,7 +41,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/home-page")
+    @GetMapping("/home-page-customer")
     public String homePage(Model model, HttpSession session, HttpServletRequest request){
         List<DTOItem> itemList = (List<DTOItem>) request.getSession().getAttribute("cart");
         if (itemList == null){
@@ -51,7 +50,7 @@ public class ProductController {
         }
         List<Product> productList = productRepository.findAllByStatus(true);
         model.addAttribute("productList",productList);
-        return "home-page";
+        return "home-page-customer";
     }
 
     @GetMapping("/add-product")
@@ -135,6 +134,6 @@ public class ProductController {
                 .size(Integer.parseInt(request.getParameter("sizeInput")))
                 .build());
         session.setAttribute("cart", itemList);
-        return "redirect:/home-page";
+        return "redirect:/home-page-customer";
     }
 }
