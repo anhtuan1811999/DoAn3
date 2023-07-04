@@ -1,12 +1,18 @@
 package com.example.doan3.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 @Table(name = "product")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -21,6 +27,5 @@ public class Product {
     @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
     private boolean status;
-
 
 }

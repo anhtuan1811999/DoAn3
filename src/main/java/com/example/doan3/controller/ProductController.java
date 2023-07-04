@@ -121,15 +121,20 @@ public class ProductController {
         var sizes = productToSizeRepository.findProductToSizeByProductAndStatus(product, true);
         model.addAttribute("product",product);
         model.addAttribute("sizes",sizes);
+        model.addAttribute("id", id);
         return "detail-product-customer";
     }
 
 
     @PostMapping("detail-product-customer")
     public String detailProductCustomerSubmit(HttpServletRequest request, HttpSession session, Model model){
-        System.out.println("inside");
-        System.out.println(request.getParameter("sizeInput"));
-
+        List<DTOItem> itemList = (List<DTOItem>) session.getAttribute("cart");
+        itemList.add(DTOItem.builder()
+                .id(Integer.parseInt(request.getParameter("id")))
+                .quantity(Integer.parseInt(request.getParameter("quantity")))
+                .size(Integer.parseInt(request.getParameter("sizeInput")))
+                .build());
+        session.setAttribute("cart", itemList);
         return "redirect:/home-page";
     }
 }

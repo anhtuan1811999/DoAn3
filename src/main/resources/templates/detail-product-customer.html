@@ -8,10 +8,23 @@
     <script type="text/javascript" th:src="@{/js/detail-product-customer.js}"></script>
 </head>
 <body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a href="#about">About</a>
+    </div>
+</header>
+<form th:action="@{/detail-product-customer}" method="post">
 <div class = "card-wrapper">
     <div class = "card">
         <!-- card left -->
         <div class = "product-imgs">
+            <div class="code-product-customer">
+                <label class="label-for-id">Mã Sản Phẩm: </label>
+                <input type="text" th:name="id" id="idProduct" th:value="${product.id}">
+            </div>
             <div class = "img-display">
                 <div class = "img-showcase">
                     <img th:src = "'data:image/jpeg;base64,'+${product.image}" alt = "shoe image">
@@ -45,10 +58,10 @@
                 </ul>
             </div>
 
-            <form th:action="@{/detail-product-customer}" method="post">
+
                 <div class = "purchase-info">
-                    <input type = "number" min = "0" value = "1">
-                    <button type = "submit" class = "btn">
+                    <input type = "number" min = "0" value = "1" th:name="quantity">
+                    <button type = "submit" class = "btn" onclick="alert('Đã lưu sản phẩm vào giỏ hàng')">
                         Add to Cart <i class = "fas fa-shopping-cart"></i>
                     </button>
                 </div>
@@ -56,19 +69,21 @@
                 <div class = "product-size">
                     <div class="product-size-detail" id="product-size-detail">
                         <th:block th:each="size : ${sizes}">
-                            <div class="particular-size"  th:data="${size.getSize().getSize()}"
-                                 th:onclick="sizeClick(this.getAttribute('data'))">
+                            <div class="particular-size-zero" th:if="${size.getQuantity() == 0}"  th:data="${size.getSize().getSize()}" th:disabled="true">
+                                <label th:text="${size.size.size}"></label>
+                            </div>
+                            <div class="particular-size" th:unless="${size.getQuantity() == 0}"  th:data="${size.getSize().getSize()}" th:onclick="sizeClick(this.getAttribute('data'))">
                                 <label th:text="${size.size.size}"></label>
                             </div>
                         </th:block>
                     </div>
                     <div class="size-selected">
-                        <input type="text" id="size-selected-input" th:name="sizeInput" th:disabled="true">
+                        <input type="text" id="size-selected-input" th:name="sizeInput" th:value="36">
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>

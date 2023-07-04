@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+/* Add a black background color to the top navigation */
+.top-nav {
+    background-color: #333;
+    overflow: hidden;
+    margin: 10px 10px 10px 10px;
+}
 
+/* Style the links inside the navigation bar */
+.top-nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.top-nav a:hover {
+
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.top-nav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
 *{
     box-sizing: border-box;
     padding: 0;
@@ -159,7 +191,7 @@ img{
     display: flex;
     align-items: center;
 }
-.product-size-detail div{
+.product-size-detail .particular-size{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,7 +205,22 @@ img{
     font-size: 0.8rem;
     transition: all 0.5s ease;
 }
-.product-size-detail div:hover{
+.product-size-detail .particular-size-zero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #ffffff;
+    background-color: #f13b4f;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+.product-size-detail .particular-size:hover{
     background: #000;
     border-color: transparent;
     color: #fff;
@@ -208,5 +255,22 @@ img{
         font-size: 50px;
         width: 60px;
         margin: 10px 10px 10px 10px;
+    }
+    .product-size {
+        display: flex;
+        align-items: center;
+    }
+    .code-product-customer {
+        display: flex;
+        align-items: center;
+    }
+    #idProduct {
+        border: none;
+        font-size: 30px;
+        width: 40px;
+        margin-left: 20px;
+    }
+    .label-for-id {
+        font-family: "Book Antiqua";
     }
 }

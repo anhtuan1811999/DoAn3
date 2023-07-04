@@ -9,5 +9,6 @@ public class DTOItem {
 
     int id;
     int quantity;
+    int size;
 
 }
