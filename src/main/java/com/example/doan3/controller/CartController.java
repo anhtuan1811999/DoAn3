@@ -38,6 +38,7 @@ public class CartController {
         if (itemList != null){
             model.addAttribute("cart", billService.getProductAndInformationRelated(itemList));
             model.addAttribute("count", Util.calculateBill(billService.getProductAndInformationRelated(itemList)));
+            model.addAttribute("login", LoginController.login);
         }
         return "cart";
     }
@@ -85,5 +86,10 @@ public class CartController {
         totalMoneyBillService.insertTotalMoneyBillToDatabase(totalMoneyBill);
         billService.insertBillToDatabase(listItem, customer);
         return "redirect:/home-page-customer";
+    }
+
+    @GetMapping("/order")
+    String getAllOrder(){
+        return "order";
     }
 }

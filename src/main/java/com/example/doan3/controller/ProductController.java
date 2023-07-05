@@ -43,6 +43,7 @@ public class ProductController {
 
     @GetMapping("/home-page-customer")
     public String homePage(Model model, HttpSession session, HttpServletRequest request){
+        boolean b = LoginController.login;
         List<DTOItem> itemList = (List<DTOItem>) request.getSession().getAttribute("cart");
         if (itemList == null){
             itemList = new ArrayList<>();
@@ -50,6 +51,8 @@ public class ProductController {
         }
         List<Product> productList = productRepository.findAllByStatus(true);
         model.addAttribute("productList",productList);
+        model.addAttribute("login", b);
+
         return "home-page-customer";
     }
 
@@ -121,6 +124,7 @@ public class ProductController {
         model.addAttribute("product",product);
         model.addAttribute("sizes",sizes);
         model.addAttribute("id", id);
+        model.addAttribute("login", LoginController.login);
         return "detail-product-customer";
     }
 

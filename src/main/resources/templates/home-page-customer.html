@@ -9,9 +9,12 @@
 <header>
     <div class="top-nav">
         <a class="active" th:href="@{/home-page-customer}">Home</a>
-        <a th:href="@{/add-product}">New</a>
-        <a th:href="@{/edit-product}">Edit</a>
+        <a th:if="${login}" th:href="@{/add-product}">New</a>
+        <a th:if="${login}" th:href="@{/edit-product}">Edit</a>
         <a th:href="@{/cart-product}">Cart</a>
+        <a th:unless="${login}" th:href="@{/login}" id="staff-login">Login</a>
+        <a th:if="${login}" th:href="@{/order}">Order</a>
+        <a th:if="${login}" th:href="@{/logout}">Logout</a>
     </div>
 </header>
 <div id="wrapper">
