@@ -8,18 +8,20 @@
 <body>
 <!-- partial:index.partial.html -->
 <div id="bg"></div>
-
-<form>
+<form th:action="@{/check-login}" method="post">
     <div class="form-field">
-        <input type="email" placeholder="Email / Username" required/>
+        <input type="email" placeholder="Email / Username" required name="email"/>
     </div>
 
     <div class="form-field">
-        <input type="password" placeholder="Password" required/>
+        <input type="password" placeholder="Password" required name="password"/>
     </div>
 
     <div class="form-field">
-        <button class="btn" type="submit">Log in</button>
+        <input class="btn" type="submit" value="Login">
+    </div>
+    <div class="announce-incorrect-info">
+        <h5 th:if="${incorrect}">Sai Thông Tin Đăng Nhập</h5>
     </div>
 </form>
 </body>
