@@ -96,18 +96,4 @@ public class CartController {
         model.addAttribute("orders", totalMoneyBillService.getListOfOrder());
         return "order";
     }
-
-    @PostMapping("/confirm-order")
-    String confirmOrder(HttpServletRequest request){
-
-        String orderRequest = request.getParameter("status-order");
-        if(orderRequest.equals("Xác thực")){
-            totalMoneyBillService.changeConfirmTotalBillTrue(request.getParameter("bill-code"));
-        } else if (orderRequest.equals("Hoàn tác")){
-            totalMoneyBillService.changeConfirmTotalBillFalse(request.getParameter("bill-code"));
-        } else {
-            System.out.println("not thing happend");
-        }
-        return "redirect:/order";
-    }
 }
