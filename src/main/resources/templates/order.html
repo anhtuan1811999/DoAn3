@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <title>Shopping Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script th:src="@{js/order.js}"></script>
+    <link th:href="@{style/order.css}" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <div class="top-nav">
+        <a class="active" th:href="@{/home-page-customer}">Home</a>
+        <a th:href="@{/add-product}">New</a>
+        <a th:href="@{/edit-product}">Edit</a>
+        <a th:href="@{/cart-product}">Cart</a>
+        <a th:href="@{/order}">Order</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <h2 class="px-5 p-2">Order</h2>
+        <th:block th:each="oreder : ${orders}">
+            <form th:action="@{/confirm-order}" method="post">
+                <div class="cart">
+                    <div class="bill-code-container">
+                        <input th:value="${oreder.getTotalMoneyBill().getBillCode()}" name="bill-code"
+                               style="border: none; width: fit-content; font-size: 18px">
+                    </div>
+                    <div class="col-md-12 col-lg-10 mx-auto">
+                        <th:block th:each=" item : ${oreder.getItems()}">
+                            <div class="cart-item cart-item-render">
+                                <div class="row">
+                                    <div class="product-code">
+                                        <label for="id">Mã sản phẩm</label>
+                                        <label id="id" th:text="${item.getProduct().getId()}"></label>
+                                    </div>
+                                    <div class="col-md-7 center-item">
+                                        <img th:src="'data:image/jpeg;base64,'+${item.getProduct().getImage()}" alt="">
+                                        <h5 th:text="${item.getProduct().getName()}"></h5>
+                                    </div>
+
+                                    <div class="col-md-5 center-item">
+                                        <div class="size-product">
+                                            <h5 class="size-product">Size: <span th:text="${item.getSize()}"></span>
+                                            </h5>
+                                        </div>
+                                        <div class="input-group number-spinner">
+                                            <label id="phone-number" class="form-control text-center"
+                                                   th:text="${item.getQuantity()}"></label>
+                                        </div>
+                                        <h5><span id="phone-total" th:text="${item.getProduct().getPrice()}"></span> VND
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                        <div class="cart-item" id="total-money">
+                            <div class="row g-2">
+
+                                <div class="col-6">
+                                    <h5>Total:</h5>
+                                </div>
+
+                                <div class="col-6 status">
+                                    <h5><span id="sub-total"
+                                              th:text="${oreder.getTotalMoneyBill().getTotalMoney()}"></span>VND</h5>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 pt-4 pb-4">
+                            <input th:unless="${oreder.totalMoneyBill.confirm}" type="submit"
+                                   class="btn btn-success check-out" id="confirm" name="status-order" value="Xác thực">
+                            <input th:if="${oreder.totalMoneyBill.confirm}" type="submit"
+                                   class="btn btn-success check-out" id="undo" name="status-order" value="Hoàn tác">
+                        </div>
+                        <div class="customer-information">
+                            <div class="out-of-input-customer">
+                                <label class="label-for-input" for="name">Họ và Tên</label><br>
+                                <label class="customer-input" th:text="${oreder.totalMoneyBill.customer.fullName}"
+                                       id="name"></label>
+                            </div>
+                            <div class="out-of-input-customer">
+                                <label class="label-for-input" for="phone">Số điện thoại</label><br>
+                                <label class="customer-input" th:text="${oreder.totalMoneyBill.customer.phone}"
+                                       id="phone"></label>
+                            </div>
+                            <div class="out-of-input-customer">
+                                <label class="label-for-input" for="address">Địa chỉ</label><br>
+                                <label class="customer-input" th:text="${oreder.totalMoneyBill.customer.address}"
+                                       id="address"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </th:block>
+    </div>
+</section>
 </body>
 </html>

@@ -21,6 +21,7 @@ public class TotalMoneyBill {
     private Customer customer;
     private Long totalMoney;
     private String billCode;
+    private boolean confirm;
     private boolean status;
 
 }

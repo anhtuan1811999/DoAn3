@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -79,17 +80,34 @@ public class CartController {
                 .customer(customer)
                 .totalMoney(monneyBill)
                 .status(true)
+                .confirm(false)
                 .billCode(codeBill)
                 .build();
         itemService.insertListItemToDataBase(listItem);
         customerService.insertCustomerToDatabase(customer);
         totalMoneyBillService.insertTotalMoneyBillToDatabase(totalMoneyBill);
         billService.insertBillToDatabase(listItem, customer);
+        session.setAttribute("cart", new ArrayList<Item>());
         return "redirect:/home-page-customer";
     }
 
     @GetMapping("/order")
-    String getAllOrder(){
+    String getAllOrder(Model model){
+        model.addAttribute("orders", totalMoneyBillService.getListOfOrder());
         return "order";
+    }
+
+    @PostMapping("/confirm-order")
+    String confirmOrder(HttpServletRequest request){
+
+        String orderRequest = request.getParameter("status-order");
+        if(orderRequest.equals("Xác thực")){
+            totalMoneyBillService.changeConfirmTotalBillTrue(request.getParameter("bill-code"));
+        } else if (orderRequest.equals("Hoàn tác")){
+            totalMoneyBillService.changeConfirmTotalBillFalse(request.getParameter("bill-code"));
+        } else {
+            System.out.println("not thing happend");
+        }
+        return "redirect:/order";
     }
 }

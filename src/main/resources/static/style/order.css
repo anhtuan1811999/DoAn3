@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+/* Add a black background color to the top navigation */
+.top-nav {
+    background-color: #333;
+    overflow: hidden;
+    margin: 10px 10px 10px 10px;
+}
+
+/* Style the links inside the navigation bar */
+.top-nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.top-nav a:hover {
+
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.top-nav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+body{
+    background: #ddb5b5;
+}
+
+.bill-code-container {
+    display: flex;
+    justify-content: center;
+}
+.announce-no-product {
+    display: flex;
+    justify-content: center;
+    color: #da4848;
+}
+.px-5{
+    display: flex;
+    justify-content: center;
+}
+.cart{
+    margin: 20px 0;
+    background-color: #F6F5FA;;
+    padding: 60px 0;
+}
+.total-price{
+    padding-bottom: 15px;
+}
+.cart-item{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+.center-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.cart-item img{
+    width: 115px;
+}
+.cart-item h5{
+    padding: 0 45px;
+}
+.remove-item {
+    background: #e07681;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    text-shadow: none;
+    margin-left: 900px;
+    width: 40px;
+    height: 40px;
+}
+
+.remove-item:hover {
+    background: #e73a4d;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    text-shadow: none;
+    margin-left: 900px;
+    width: 40px;
+    height: 40px;
+}
+.btn-default{
+    background-color: #fff;
+}
+.cart-item .form-control{
+    background-color: #F6F5FA;
+    border: none;
+    width: 65px;
+    border-radius: 10px!important;
+    font-weight: 700;
+    font-size: 20px;
+}
+.input-group{
+    width: unset;
+    flex-wrap: nowrap;
+}
+.status{
+    text-align: right;
+}
+.check-out{
+    float: right;
+    padding: 10px 30px;
+    font-size: 19px;
+    background-color: #2FBE70;
+    border: none;
+}
+.customer-input {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.label-for-input {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    font-weight: inherit;
+}
+#address {
+    width: 450px;
+}
+.customer-information {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.out-of-input-customer {
+    margin: 10px 10px 10px 10px;
+}
+#id{
+    border: none;
+    width: 7px;
+}
