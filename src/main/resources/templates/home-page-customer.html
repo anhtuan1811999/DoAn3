@@ -32,7 +32,7 @@
                     <div class="product-info">
                         <a href="" class="product-cat"></a>
                         <a href="" class="product-name" th:value="${product.name}" th:text="${product.name}"></a>
-                        <div class="product-price" th:value="${product.price}" th:text="${product.price}"></div>
+                        <div class="product-price"><span th:value="${product.price}" th:text="${product.price + ' VND'}"></span></div>
                     </div>
                 </div>
             </li>

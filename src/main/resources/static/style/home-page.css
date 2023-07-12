@@ -37,6 +37,10 @@ body{
     color: #111;
     line-height: 1.15;
 }
+.product-price{
+    display: flex;
+    justify-content: center;
+}
 #wrapper{
     max-width: 1170px;
     margin: 0 auto;
